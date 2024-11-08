@@ -20,9 +20,10 @@ public class FollowWP : MonoBehaviour
     {
         wps = wpManager.GetComponent<WPManager>().waypoints;
         g = wpManager.GetComponent<WPManager>().graph;
-        currentNode = wps[0];
+        currentNode = wps[4];
+        Time.timeScale = 5;
 
-        Invoke("GoToRuin", 2);
+        //Invoke("GoToRuin", 2);
     }
 
     public void GoToHeli() 
@@ -34,6 +35,12 @@ public class FollowWP : MonoBehaviour
     public void GoToRuin ()
     {
         g.AStar(currentNode, wps[1]);
+        currentWP = 0;
+    }
+
+    public void GoToFactory()
+    {
+        g.AStar(currentNode, wps[4]);
         currentWP = 0;
     }
 
